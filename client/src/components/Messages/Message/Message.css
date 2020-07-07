@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     font-family: Helvetica;
-    color: #828282;
+    color: #b39ddb;
     letter-spacing: 0.3px;
   }
   
@@ -55,11 +55,11 @@
   }
   
   .colorDark {
-    color: #353535;
+    color: #673ab7;
   }
   
-  .backgroundBlue {
-    background: #2979FF;
+  .backgroundCurrentUser {
+    background: #673ab7;
   }
   
   .backgroundLight {

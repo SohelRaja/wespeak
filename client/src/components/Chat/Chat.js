@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from'react';
-import queryString from 'query-string';
+import {useHistory} from 'react-router-dom';
 import io from 'socket.io-client';
+import {connect} from 'react-redux';
+
 
 import './Chat.css';
 import InfoBar from '../InfoBar/InfoBar';
@@ -9,24 +11,26 @@ import Messages from '../Messages/Messages';
 
 let socket;
 
-const Chat = ({location}) => {
-    const [name, setName] = useState('');
-    const [room, setRoom] = useState('');
+const Chat = (props) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = 'https://wespeak.herokuapp.com/';
+    const ENDPOINT = 'localhost:5000'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
+    const history = useHistory();
+
+    const name = props.userData.name;
+    const room = props.userData.room;
 
     useEffect(() => {
-        const {name, room} = queryString.parse(location.search);
-
         socket = io(ENDPOINT);
-
-        setName(name);
-        setRoom(room);
+        console.log(props.userData.name,props.userData.room)
+        if(!name || !room){
+            history.push('/')
+        }
 
         socket.emit('join', { name, room }, (error) => {
             if(error) {
-              alert(error);
+                alert(error);
+                history.push('/');
             }
         });
 
@@ -35,7 +39,7 @@ const Chat = ({location}) => {
 
             socket.off();
         }
-    }, [ENDPOINT, location.search]);
+    }, [ENDPOINT, name, room]);
 
     useEffect(() => {
         socket.on('message', (message) => {
@@ -65,4 +69,10 @@ const Chat = ({location}) => {
     );
 }
 
-export default Chat;
+const mapStateToProps = state => {
+    return {
+        userData: state
+    }
+}
+
+export default connect(mapStateToProps, undefined)(Chat);

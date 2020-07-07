@@ -1,13 +1,17 @@
 .form {
     display: flex;
-    border-top: 2px solid #D3D3D3;
+    justify-content: space-between;
+    width: 95%;
+    margin: 15px auto;
   }
   
   .input {
     border: none;
-    border-radius: 0;
-    padding: 5%;
-    width: 80%;
+    border-radius: 20px;
+    box-shadow: -1px 1px 10px 0px #673ab7;
+    padding: 2% 5%;
+    width: 78%;
+    color: #673ab7;
     font-size: 1.2em;
   }
   
@@ -19,9 +23,12 @@
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: #2979FF;
-    padding: 20px;
+    background: #673ab7;
+    padding: 10px 20px;
     display: inline-block;
     border: none;
+    box-shadow: -1px 1px 10px -4px #673ab7;
+    border-radius: 20px;
     width: 20%;
+    cursor: pointer;
   }
