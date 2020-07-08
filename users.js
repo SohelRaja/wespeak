@@ -4,6 +4,10 @@ const addUser = ({id, name, room}) => {
     name = name.trim().toLowerCase();
     room = room.trim().toLowerCase();
 
+    if(!name || !room){
+        return {error: "Please provide username and room name."}
+    }
+
     const existingUser = users.find((user) => user.room === room && user.name === name);
 
     if(existingUser){

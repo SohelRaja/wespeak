@@ -12,14 +12,14 @@ const Join = (props) => {
     return (
         <div className="joinOuterContainer">
             <div className="joinInnerContainer">
-                <h1 className="heading">We<span className="heading-sub">S</span>peak</h1>
+                <h1 className="heading">We<span className="heading-sub">S</span>peak <i class="fa fa-comments" aria-hidden="true"></i></h1>
                 <div><input placeholder="Name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} /></div>
                 <div><input placeholder="Room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} /></div>
                 <Link 
                     onClick={event => (!name || !room) ? event.preventDefault() : null} 
                     to={`/chat`}
                 >
-                <button className="button mt-20" onClick={() => props.joinUser(name,room)}>Join WeSpeak</button>
+                <button className="button mt-20" onClick={() => props.joinUser(name,room)}>Join WeSpeak <i class="fa fa-comments" aria-hidden="true"></i></button>
                 </Link>
                 <h5 style={{color: "#673ab7", marginTop: "7px", textAlign: "center"}}> Dev ❤️ ed by &nbsp;
                     <a href="https://sohelraja.github.io" style={{color: "#e91e63", textDecoration: "none"}}>Sohel Raja Molla</a>

@@ -14,7 +14,8 @@ let socket;
 const Chat = (props) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = 'https://wespeak.herokuapp.com/'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
+    // const ENDPOINT = 'https://wespeak.herokuapp.com/'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
+    const ENDPOINT = 'localhost:5000'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
     const history = useHistory();
 
     const name = props.userData.name;
@@ -22,22 +23,23 @@ const Chat = (props) => {
 
     useEffect(() => {
         socket = io(ENDPOINT);
-        console.log(props.userData.name,props.userData.room)
+        // console.log(props.userData.name,props.userData.room)
         if(!name || !room){
             history.push('/')
         }
-
-        socket.emit('join', { name, room }, (error) => {
-            if(error) {
-                alert(error);
-                history.push('/');
+        else{
+            socket.emit('join', { name, room }, (error) => {
+                if(error) {
+                    alert(error);
+                    history.push('/');
+                }
+            });
+    
+            return () => {
+                socket.emit('disconnect');
+    
+                socket.off();
             }
-        });
-
-        return () => {
-            socket.emit('disconnect');
-
-            socket.off();
         }
     }, [ENDPOINT, name, room]);
 
@@ -60,7 +62,7 @@ const Chat = (props) => {
 
     return (
         <div className="outerContainer">
-            <div className="container">
+            <div className="container-chat">
                 <InfoBar room={room} />
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />

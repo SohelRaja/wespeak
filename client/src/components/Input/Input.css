@@ -1,3 +1,6 @@
+.outerContainer-form{
+  background: #673ab7;
+}
 .form {
     display: flex;
     justify-content: space-between;
@@ -20,10 +23,10 @@
   }
   
   .sendButton {
-    color: #fff !important;
+    color: #673ab7 !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: #673ab7;
+    background: #fff;
     padding: 10px 20px;
     display: inline-block;
     border: none;
@@ -31,4 +34,7 @@
     border-radius: 20px;
     width: 20%;
     cursor: pointer;
+  }
+  .sendButton .fa-paper-plane{
+    font-size: 1.5rem;
   }

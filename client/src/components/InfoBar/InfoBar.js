@@ -12,7 +12,7 @@ const InfoBar = ({room}) => {
                 <h3>{room}</h3>
             </div>
             <div>
-                <h3 className="heading-title">WeSpeak <span role="img" aria-label="emoji">💬</span></h3>
+                <h3 className="heading-title">WeSpeak <i class="fa fa-comments" aria-hidden="true"></i></h3>
             </div>
             <div className="rightInnerContainer">
                 <a href="/"><img src={closeIcon} alt="close image" /></a>
