@@ -14,8 +14,8 @@ let socket;
 const Chat = (props) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    // const ENDPOINT = 'https://wespeak.herokuapp.com/'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
-    const ENDPOINT = 'localhost:5000'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
+    const ENDPOINT = 'https://wespeak.herokuapp.com/'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
+    // const ENDPOINT = 'localhost:5000'; // 'https://wespeak.herokuapp.com/' || 'localhost:5000'
     const history = useHistory();
 
     const name = props.userData.name;
