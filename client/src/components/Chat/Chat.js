@@ -44,9 +44,13 @@ const Chat = (props) => {
     }, [ENDPOINT, name, room]);
 
     useEffect(() => {
-        socket.on('message', (message) => {
-            setMessages([...messages, message]);
-        })
+        if(!name || !room){
+            history.push('/')
+        } else {
+            socket.on('message', (message) => {
+                setMessages([...messages, message]);
+            })
+        }
     }, [messages]);
 
     //function for sending messages
